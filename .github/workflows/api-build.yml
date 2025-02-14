@@ -19,6 +19,8 @@ jobs:
         working-directory: ./api
       - run: dotnet test
         working-directory: ./api
+      - run: dotnet test
+        working-directory: ./api
 
 
 
