@@ -11,9 +11,10 @@ jobs:
   chat:
     runs-on: ubuntu-latest
     steps:
-      - uses: ca-dp/code-butler@v1 # Use the Code Butler action to process the chat command
+      - name: Run Code Butler Action
+        uses: ca-dp/code-butler@v1
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GitHub token for authentication
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}  # OpenAI API key for interaction
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           cmd: chat
-          comment_body: ${{github.event.comment.body}}
+          comment_body: ${{ github.event.comment.body }}
