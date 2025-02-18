@@ -18,9 +18,9 @@ var newSummaries = new[]
     "Brrrrr", "Yikes", "Frozen", "Hot", "Ouch", "StopIt"
 };
 
-var summaries = new[]
+var newsummaries = new[]
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+    "Freezing", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
 
 app.MapGet("/sensitive", (string? password) =>
