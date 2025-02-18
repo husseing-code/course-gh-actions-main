@@ -10,7 +10,7 @@ jobs:
     chat:
         runs-on: ubuntu-latest
         steps:
-            - uses: ca-dp/code-butler@v1
+            - uses: ca-dp/code-butler@v1.0.15
               with:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                 OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
