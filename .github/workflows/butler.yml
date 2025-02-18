@@ -11,8 +11,11 @@ jobs:
     chat:
         runs-on: ubuntu-latest
         steps:
-            -  uses: ca-dp/code-butler@v1
-               with:
+            - name: Checkout code
+              uses: actions/checkout@v2
+            - name: Run Code Butler
+              uses: ca-dp/code-butler@v1
+              with:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                 OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
                 cmd: chat
