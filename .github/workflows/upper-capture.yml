@@ -1,32 +1,47 @@
-name: upper-capture
+name: upper-capture  # Name of the workflow
 
 on:
   push:
     paths:
-      - ".github/workflows/upper-capture.yml"
-      - "upper/**"
-  workflow_dispatch: # manually
+      - ".github/workflows/upper-capture.yml"  # Trigger when this workflow file changes
+      - "upper/**"  # Trigger when any file in the "upper" directory changes
+  workflow_dispatch:  # Allows manual triggering of the workflow
 
 jobs:
   capture:
     strategy:
       matrix:
-        os: [ ubuntu-latest, windows-latest, macos-latest ]
-    runs-on: ${{ matrix.os }}
+        os: [ ubuntu-latest, windows-latest, macos-latest ]  # Run the job on multiple operating systems
+    runs-on: ${{ matrix.os }}  # Uses the OS from the matrix
+
     defaults:
       run:
-        working-directory: upper
+        working-directory: upper  # Sets the working directory for all run commands
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-go@v5
+      - name: Checkout repository
+        uses: actions/checkout@v4  # Clones the repository to the runner
+
+      - name: Set up Go environment
+        uses: actions/setup-go@v5  # Installs the specified Go version
         with:
-          go-version: 1.22
-          cache-dependency-path: ./upper/go.sum
-      - run: ls
-      - run: go build
-      - run: ls
-      - run: go test -v
-      - uses: actions/upload-artifact@v4
+          go-version: 1.22  # Specifies the Go version to use
+          cache-dependency-path: ./upper/go.sum  # Enables dependency caching for faster builds
+
+      - name: List directory contents before build
+        run: ls  # Displays files in the working directory for debugging
+
+      - name: Build Go project
+        run: go build  # Compiles the Go project
+
+      - name: List directory contents after build
+        run: ls  # Checks if the build output exists
+
+      - name: Run tests
+        run: go test -v  # Runs Go tests with verbose output
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4  # Saves the built files for later use
         with:
-          path: ./upper/upper*
-          name: "build-${{ matrix.os }}"
+          path: ./upper/upper*  # Specifies the build output files
+          name: "build-${{ matrix.os }}"  # Names the artifact based on the OS
