@@ -18,7 +18,8 @@ jobs:
     if: contains(github.event.comment.body, '/chat')
     runs-on: ubuntu-latest
     steps:
-      - uses: ca-dp/code-butler@v1
+      - name: Run Code Butler Chat
+        uses: ca-dp/code-butler@v1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
@@ -29,7 +30,8 @@ jobs:
     if: contains(github.event.comment.body, '/review')
     runs-on: ubuntu-latest
     steps:
-      - uses: ca-dp/code-butler@v1
+      - name: Run Code Butler Review
+        uses: ca-dp/code-butler@v1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
