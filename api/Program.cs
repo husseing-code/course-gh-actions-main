@@ -14,7 +14,7 @@ if (app.Environment.IsDevelopment())
 }
 
 
-var newsummaries = new[]
+var summaries = new[]
 {
     "Freezing", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
