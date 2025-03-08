@@ -15,7 +15,7 @@ resource "azurerm_resource_group" "gh-actions" {
   # az group list --output table
   # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group
   name     = "gh-actions"
-  location = "eastus"
+  location = "canadaeast"
 }
 
 
@@ -34,7 +34,7 @@ resource "azurerm_service_plan" "web-api" {
 resource "azurerm_linux_web_app" "web-api" {
   # az webapp list --output table
   # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/linux_web_app
-  name                = "gh-actions-web-api" # => https://gh-actions-web-api.azurewebsites.net # *** MAKE SURE TO SET NEW NAME (one universal namespace for everyone) ***
+  name                = "gh-actions-web-api-hg" # => https://gh-actions-web-api-hg.azurewebsites.net # *** MAKE SURE TO SET NEW NAME (one universal namespace for everyone) ***
   resource_group_name = azurerm_resource_group.gh-actions.name
   location            = azurerm_resource_group.gh-actions.location
 
@@ -48,7 +48,7 @@ resource "azurerm_linux_web_app" "web-api" {
     #   i.e. linux_fx_version = "DOCKER|weshigbee/actions-web-test:latest"
     #   use application_stack instead:
     application_stack {
-      docker_image_name   = "weshigbee/actions-web-test:latest"
+      docker_image_name   = "hgure/actions-web:latest"
       docker_registry_url = "https://index.docker.io" # azurerm UI marks this required (when not set), docs for linux_web_app terraform module say its optional ... w00t, setting this here makes the UI pick "Docker Hub" in azurerm AND now container is running!
     }
 
