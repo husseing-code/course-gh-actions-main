@@ -66,3 +66,9 @@ go.work
 
 # End of https://www.toptal.com/developers/gitignore/api/go
 
+#System Terraform Files
+# Ignore Terraform state files and provider binaries
+*.tfstate
+*.tfstate.backup
+.terraform/
+.terraform.lock.hcl
