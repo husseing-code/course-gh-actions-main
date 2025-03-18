@@ -10,7 +10,7 @@ jobs:
   generate:
     outputs:
       RANDOM_PASSWORD: ${{ env.RANDOM_PASSWORD }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - run: env | sort
       - run: echo "RANDOM_PASSWORD=$(LC_ALL=C tr -dc A-Za-z0-9 </dev/urandom | head -c 12)" >> "$GITHUB_ENV"
