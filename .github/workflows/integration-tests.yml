@@ -16,4 +16,10 @@ jobs:
       - run: echo "RANDOM_PASSWORD=$(LC_ALL=C tr -dc A-Za-z0-9 </dev/urandom | head -c 12)" >> "$GITHUB_ENV"
       - run: echo "$RANDOM_PASSWORD / ${{ env.RANDOM_PASSWORD }}"
       - run: env | sort
-      # - run: mysql ... -p $RANDOM_PASSWORD
+  testing:
+    runs-on: ubuntu-22.04
+    needs: generate
+    steps:
+        - run: echo"${{needs.generate}}""
+
+   # - run: mysql ... -p $RANDOM_PASSWORD
