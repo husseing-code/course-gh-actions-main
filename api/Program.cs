@@ -21,11 +21,6 @@ var summaries = new[]
 
 app.MapGet("/sensitive", (string? password) =>
 {
-    if (password == "password")
-    {
-        return "You have access";
-    }
-    else
     {
     return "Access denied!";
     }
