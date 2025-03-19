@@ -21,9 +21,16 @@ var summaries = new[]
 
 app.MapGet("/sensitive", (string? password) =>
 {
+    if (password == "password")
+    {
+        return "You have access";
+    }
+    else
+    {
     return "Access denied!";
-});
+    }
 
+});
 int foo;
 
 var consistentForecasts = Enumerable.Range(1, 5).Select(index =>
